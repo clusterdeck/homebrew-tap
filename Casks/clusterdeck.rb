@@ -22,14 +22,19 @@ cask "clusterdeck" do
 
   caveats do
     <<~EOS
-      Clusterdeck is not (yet) code-signed or notarized. On first launch, macOS
-      Gatekeeper will block it. To open it:
+      No admin rights? Install without sudo, into your user Applications folder:
+
+        brew install --appdir=~/Applications --cask clusterdeck
+
+      Clusterdeck is not (yet) code-signed or notarized, so macOS Gatekeeper will
+      block it on first launch. To open it:
 
         Right-click Clusterdeck.app in Applications → Open → Open
 
       or clear the quarantine flag from the terminal:
 
-        xattr -dr com.apple.quarantine /Applications/Clusterdeck.app
+        xattr -dr com.apple.quarantine ~/Applications/Clusterdeck.app
+        (or /Applications/Clusterdeck.app if installed system-wide)
     EOS
   end
 end
