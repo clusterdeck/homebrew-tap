@@ -9,16 +9,15 @@ cask "clusterdeck" do
   desc "Multi-cluster SSH workspace app (fork of Wave Terminal)"
   homepage "https://github.com/clusterdeck/app"
 
+  auto_updates false
   depends_on arch: :arm64
   depends_on macos: :big_sur
-
-  auto_updates false
 
   app "Clusterdeck.app"
 
   zap trash: [
-    "~/Library/Application Support/clusterdeck",
     "~/.config/clusterdeck",
+    "~/Library/Application Support/clusterdeck",
   ]
 
   caveats do
