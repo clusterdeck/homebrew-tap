@@ -10,7 +10,7 @@ cask "clusterdeck" do
   homepage "https://github.com/clusterdeck/app"
 
   depends_on arch: :arm64
-  depends_on macos: ">= :big_sur"
+  depends_on macos: :big_sur
 
   auto_updates false
 
@@ -21,14 +21,16 @@ cask "clusterdeck" do
     "~/.config/clusterdeck",
   ]
 
-  caveat <<~EOS
-    Clusterdeck is not (yet) code-signed or notarized. On first launch, macOS
-    Gatekeeper will block it. To open it:
+  caveats do
+    <<~EOS
+      Clusterdeck is not (yet) code-signed or notarized. On first launch, macOS
+      Gatekeeper will block it. To open it:
 
-      Right-click Clusterdeck.app in Applications → Open → Open
+        Right-click Clusterdeck.app in Applications → Open → Open
 
-    or clear the quarantine flag from the terminal:
+      or clear the quarantine flag from the terminal:
 
-      xattr -dr com.apple.quarantine /Applications/Clusterdeck.app
-  EOS
+        xattr -dr com.apple.quarantine /Applications/Clusterdeck.app
+    EOS
+  end
 end
