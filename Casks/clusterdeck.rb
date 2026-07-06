@@ -15,6 +15,11 @@ cask "clusterdeck" do
 
   app "Clusterdeck.app"
 
+  postflight do
+    system_command "/usr/bin/xattr",
+                    args: ["-dr", "com.apple.quarantine", "#{appdir}/Clusterdeck.app"]
+  end
+
   zap trash: [
     "~/.config/clusterdeck",
     "~/Library/Application Support/clusterdeck",
@@ -22,16 +27,15 @@ cask "clusterdeck" do
 
   caveats do
     <<~EOS
-      No admin rights? Install without sudo, into your user Applications folder:
+      Clusterdeck is not (yet) code-signed or notarized by Apple. The quarantine
+      flag is cleared automatically after install/upgrade, so macOS should let it
+      open normally.
 
-        brew install --appdir=~/Applications --cask clusterdeck
-
-      Clusterdeck is not (yet) code-signed or notarized, so macOS Gatekeeper will
-      block it on first launch. To open it:
+      If it's still blocked on first launch, clear it manually:
 
         Right-click Clusterdeck.app in Applications → Open → Open
 
-      or clear the quarantine flag from the terminal:
+      or from the terminal:
 
         xattr -dr com.apple.quarantine ~/Applications/Clusterdeck.app
         (or /Applications/Clusterdeck.app if installed system-wide)
