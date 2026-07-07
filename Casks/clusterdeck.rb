@@ -1,8 +1,8 @@
 cask "clusterdeck" do
   arch arm: "arm64"
 
-  version "0.1.2"
-  sha256 "aa0a5fea2feb70a27d9fef38e6e1c928c3bf92032a42cc4b31847187baafa739"
+  version "0.1.3"
+  sha256 "8bc6132d1a96fd15cbede03c79e9e1e3d17f3c2bc056bcd0d62306f86d520c37"
 
   url "https://github.com/clusterdeck/releases/releases/download/v#{version}/Clusterdeck-darwin-#{arch}-#{version}.dmg"
   name "Clusterdeck"
